@@ -1,1 +1,17 @@
-[작성중]
+# Attention is all you need
+
+## 요약
+
+2017년 구글 연구진이 발표한 "Attention Is All You Need" 논문은 자연어 처리 분야에 중요한 기술적 진보를 가져왔다. 이 논문이 제시한 Transformer 아키텍처는 기존 순환 신경망(RNN)과 합성곱 신경망(CNN)을 사용하지 않고, 'Attention' 메커니즘만으로 언어를 처리하는 방식을 제안했다.
+
+Attention 메커니즘은 인공지능이 텍스트를 처리할 때 문맥을 파악하는 기술이다. 2014년 처음 제안되었던 Attention 메커니즘은 2017년에 발표된 Transformer를 통해 완성된 형태를 갖추었다. Attebtion의 작동 방식은 인간의 독서 과정과 유사하다. 문장을 읽을 때 우리는 특정 단어에 집중하면서 동시에 관련된 다른 단어들도 함께 고려한다. Attention도 이처럼 각 단어가 다른 단어들과 얼마나 관련이 있는지를 계산한다. 조금 구체적으로 설명하자면, **Attention은 Query(질의), Key(키), Value(값)라는 세 가지 요소를 사용**한다. Query와 Key의 연관성을 계산하고, 이를 바탕으로 Value의 가중 평균을 구한다. Transformer에서는 이를 발전시켜 'Multi-head Self-attention'을 도입했다. 하나의 Attention 대신 여러 개의 Attention을 병렬로 수행하여 다양한 관점에서 단어 간 관계를 포착한다.
+하나의 예를 들어보자. "The animal didn't cross the street because it was too tired"라는 문장이 있다. 이 문장에서 'it'이 무엇을 지칭하는지 파악할 때 Attention이 사용된다. 모델은 'it'이 'animal'과 가장 강한 연관성을 가진다고 판단하고, 이를 바탕으로 문장의 의미를 정확히 이해할 수 있다. 이렇듯 Attention은 문장 길이에 관계 없이 모든 단어 쌍의 관계를 직접적으로 모델링할 수 있다. 이와 같은 Attention의 특징은 기존의 RNN이 가지고 있던 장거리 의존성 문제를 해결할 뿐만 아니라 Transformer의 병렬 처리 능력에 크게 기여했다.
+
+Transformer의 주요 혁신은 병렬 처리 능력에 있다. 기존 RNN이 문장을 단어 단위로 순차적으로 처리했다면, Transformer는 문장 전체를 동시에 처리할 수 있다. 이는 학습 속도와 효율성 측면에서 큰 향상을 가져왔다. 8개의 GPU로 3.5일간 학습한 모델은 영어-독일어 번역에서 BLEU 스코어 28.4를 기록했다.
+Transformer는 세 가지 주요 특징을 가진다. 먼저, 'Multi-head Self-attention'으로 문장 내 단어들의 관계를 여러 각도에서 분석한다. 다음으로, Position Encoding을 통해 단어의 위치 정보를 보존한다. 마지막으로, 병렬 처리가 가능한 Feed-forward Neural Network를 사용한다.
+이 아키텍처는 이후 BERT, GPT 등 현대 언어 모델의 기초가 되었다. 특히 긴 문장의 문맥을 이해하고 처리하는 능력이 뛰어나 다양한 자연어 처리 작업에 활용되고 있다.
+아키텍처의 단순함에도 불구하고 보여준 뛰어난 성능은, 복잡한 신경망 구조가 항상 최선의 해결책이 아님을 보여주었다. 이는 인공지능 연구에서 새로운 관점을 제시한 것으로 평가받는다.
+
+이번 글에서는 Transformer를 제안한 Attention is all you need 논문에 대해서 알아보자.
+
+Abstract
